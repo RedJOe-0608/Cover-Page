@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+
+body{
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    font-family: 'Source Sans Pro', monospace;
+    background-color: var(--bgColor);
+    letter-spacing: 0.25rem;
+    text-align: center;
+}
+
+:root{
+    --bgColor: #f3ece4;
+    --typewriterSpeed: 6s;
+    --charCount: 33;
+}
+
+
+h1{
+    position: relative;
+}
+
+h1::before,::after{
+    content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+color: black;
+}
+
+h1::before{
+    background-color: var(--bgColor);
+    animation: typewriter var(--typewriterSpeed) 1s steps(var(--charCount)) forwards;
+}
+
+h1::after{
+    width: 0.125rem;
+    background-color: black;
+    animation: typewriter var(--typewriterSpeed) 1s steps(var(--charCount)) forwards, blink 750ms steps(33) infinite;
+}
+
+p{
+    font-size: 1.1rem;
+    color: grey;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeInUp 2s ease calc(var(--typewriterSpeed) + 2s) forwards;
+}
+
+@keyframes typewriter{
+    to{
+        left: 100%;
+    }
+}
+
+@keyframes blink{
+    to{
+        background: transparent;
+        /* visibility: hidden; */
+    }
+}
+
+@keyframes fadeInUp{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
